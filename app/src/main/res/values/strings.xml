@@ -2,7 +2,7 @@
     <string name="app_name">Beber H2O - Lembrete</string>
     <string name="hint_peso">Seu Peso (kg)</string>
     <string name="hint_idade">Sua idade</string>
-    <string name="text_button_calcular">Calcular Ingestão Diária</string>
+    <string name="text_button_calcular">Ingestão Diária de água</string>
     <string name="txt_button_lembrete">Lembrete</string>
     <string name="txt_button_alarme">Alarme</string>
     <string name="txt_hora">00</string>

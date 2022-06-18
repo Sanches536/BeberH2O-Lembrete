@@ -58,6 +58,8 @@ class MainActivity : AppCompatActivity() {
                     binding.editPeso.setText("")
                     binding.editIdade.setText("")
                     binding.txtResultadoMl.text = ""
+                    binding.txtHora.text = "00"
+                    binding.txtMinuto.text = "00"
                 }
             alertDialog.setNegativeButton("Cancela") { _, _ ->
 
