@@ -17,14 +17,14 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var calcularIngestaoDiaria: CalcularIngestaoDiaria
+    private lateinit var calculateIngestionDiary: CalcularIngestaoDiaria
 
-    lateinit var timePickerDialog: TimePickerDialog
-    lateinit var calendar: Calendar
-    var horaAtual = 0
-    var minutoAtual = 0
+    private lateinit var timePickerDialog: TimePickerDialog
+    private lateinit var calendar: Calendar
+    private var horaActual = 0
+    private var minuteActual = 0
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "QueryPermissionsNeeded")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar!!.hide()
 
-        calcularIngestaoDiaria = CalcularIngestaoDiaria()
+        calculateIngestionDiary = CalcularIngestaoDiaria()
 
         binding.btnCalcular.setOnClickListener{
 
@@ -42,11 +42,11 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, R.string.toast_informe_idade, Toast.LENGTH_SHORT).show()
             }else{
                 val peso = binding.editPeso.text.toString().toDouble()
-                val idade = binding.editIdade.text.toString().toInt()
-                val resultado = calcularIngestaoDiaria.calcular(peso, idade)
-                val formatar = NumberFormat.getNumberInstance(Locale("pt", "BR"))
-                formatar.isGroupingUsed = false
-                binding.txtResultadoMl.text = formatar.format(resultado).toString() + " " + "ml"
+                val age = binding.editIdade.text.toString().toInt()
+                val result = calculateIngestionDiary.calcular(peso, age)
+                val format = NumberFormat.getNumberInstance(Locale("pt", "BR"))
+                format.isGroupingUsed = false
+                binding.txtResultadoMl.text = format.format(result).toString() + " " + "ml"
             }
         }
 
@@ -61,21 +61,21 @@ class MainActivity : AppCompatActivity() {
                     binding.txtHora.text = "00"
                     binding.txtMinuto.text = "00"
                 }
-            alertDialog.setNegativeButton("Cancela") { _, _ ->
+            alertDialog.setNegativeButton("Cancel") { _, _ ->
 
             }
-            val dialog = alertDialog.create()
-            dialog.show()
+            alertDialog.create().show()
+
         }
 
         binding.btnLembrete.setOnClickListener{
             calendar = Calendar.getInstance()
-            horaAtual = calendar.get(Calendar.HOUR_OF_DAY)
-            minutoAtual = calendar.get(Calendar.MINUTE)
-            timePickerDialog = TimePickerDialog(this,{ timePicker: TimePicker, hourOfDay: Int, minutes: Int ->
+            horaActual = calendar.get(Calendar.HOUR_OF_DAY)
+            minuteActual = calendar.get(Calendar.MINUTE)
+            timePickerDialog = TimePickerDialog(this,{ _: TimePicker, hourOfDay: Int, minutes: Int ->
                 binding.txtHora.text = String.format("%02d", hourOfDay)
                 binding.txtMinuto.text = String.format("%02d", minutes)
-            },horaAtual, minutoAtual, true)
+            },horaActual, minuteActual, true)
             timePickerDialog.show()
         }
 

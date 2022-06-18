@@ -31,7 +31,7 @@
         android:src="@drawable/bebaagua"
         app:layout_constraintStart_toStartOf="@id/container_header"
         app:layout_constraintTop_toTopOf="@id/container_header"
-        tools:ignore="ImageContrastCheck" />
+        tools:ignore="ContentDescription,ImageContrastCheck" />
 
     <ImageView
         android:id="@+id/ic_refresh"
@@ -42,7 +42,7 @@
         android:src="@drawable/ic_refresh"
         app:layout_constraintEnd_toEndOf="@id/container_header"
         app:layout_constraintTop_toTopOf="@id/container_header"
-        tools:ignore="ImageContrastCheck" />
+        tools:ignore="ContentDescription,ImageContrastCheck" />
 
     <EditText
         android:id="@+id/edit_peso"
@@ -87,16 +87,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:background="@drawable/bg_degrade_button"
+        android:padding="10dp"
         android:text="@string/text_button_calcular"
+        android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        android:padding="10dp"
-        android:textAllCaps="false"
         android:textStyle="bold"
-        android:background="@drawable/bg_degrade_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_peso" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_peso"
+        tools:ignore="TextContrastCheck" />
 
     <View
         android:id="@+id/container_resultado_ml"
